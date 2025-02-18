@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <animated.footer style={props} className="bg-glass-bg backdrop-blur-lg border-t border-glass-border p-8 mt-auto">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
             <h4 className="text-xl font-bold mb-4">AI Resume Maker</h4>
@@ -37,6 +37,25 @@ const Footer = () => {
               <a href="#" className="mx-2 text-gray-400 hover:text-white"><i className="fab fa-linkedin"></i></a>
               <a href="#" className="mx-2 text-gray-400 hover:text-white"><i className="fab fa-github"></i></a>
             </div>
+          </div>
+
+          {/* Newsletter Signup */}
+          <div>
+            <h4 className="text-xl font-bold mb-4">Newsletter</h4>
+            <p className="text-gray-400 mb-4">Subscribe to our newsletter for updates.</p>
+            <form>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-glass-bg border-glass-border text-white"
+              />
+              <button
+                type="submit"
+                className="bg-primary-purple hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-2"
+              >
+                Subscribe
+              </button>
+            </form>
           </div>
         </div>
 

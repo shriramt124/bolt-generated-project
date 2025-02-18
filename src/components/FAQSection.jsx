@@ -34,46 +34,51 @@ const FAQSection = () => {
   return (
     <section id="faq" className="py-16">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold mb-4 text-center">Frequently Asked Questions</h2>
-        <p className="text-lg mb-8 text-center text-gray-400">Here are some questions I often get asked about Reactive Resume.</p>
-        <div className="space-y-2">
-          {faqData.map((faq, index) => {
-            const isOpen = openIndex === index;
-            const arrowAnimation = useSpring({
-              transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-              config: { tension: 200, friction: 22 },
-            });
+        <div className="grid grid-cols-2 gap-8">
+          <div className="col-span-1">
+            <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg mb-8 text-gray-400">Here are some questions I often get asked about Reactive Resume.</p>
+            
+          </div>
+          <div className="col-span-1 space-y-2">
+            {faqData.map((faq, index) => {
+              const isOpen = openIndex === index;
+              const arrowAnimation = useSpring({
+                transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                config: { tension: 200, friction: 22 },
+              });
 
-            const contentAnimation = useSpring({
-              maxHeight: isOpen ? '1000px' : '0px',
-              opacity: isOpen ? 1 : 0,
-              config: { tension: 200, friction: 22 },
-            });
+              const contentAnimation = useSpring({
+                maxHeight: isOpen ? (isOpen ? '1000px' : '0px') : '0px',
+                opacity: isOpen ? 1 : 0,
+                config: { tension: 200, friction: 22 },
+              });
 
-            return (
-              <div key={index} className="py-2">
-                <button
-                  className="flex justify-between items-center w-full text-left"
-                  onClick={() => toggleFAQ(index)}
-                >
-                  <span className="text-lg font-medium text-white">{faq.question}</span>
-                  <animated.svg
-                    style={arrowAnimation}
-                    className="w-4 h-4 text-gray-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
+              return (
+                <div key={index} className="py-2">
+                  <button
+                    className="flex justify-between items-center w-full text-left"
+                    onClick={() => toggleFAQ(index)}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                  </animated.svg>
-                </button>
-                <animated.div style={contentAnimation} className="overflow-hidden">
-                  <p className="mt-2 text-gray-400">{faq.answer}</p>
-                </animated.div>
-              </div>
-            );
-          })}
+                    <span className="text-lg font-medium text-white">{faq.question}</span>
+                    <animated.svg
+                      style={arrowAnimation}
+                      className="w-4 h-4 text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                    </animated.svg>
+                  </button>
+                  <animated.div style={contentAnimation} className="overflow-hidden">
+                    <p className="mt-2 text-gray-400">{faq.answer}</p>
+                  </animated.div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

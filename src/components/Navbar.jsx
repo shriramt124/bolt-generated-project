@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const props = useSpring({
@@ -12,9 +13,9 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         <a href="/" className="text-2xl font-bold">AI Resume Maker</a>
         <div className="space-x-4">
-          <a href="#features" className="hover:text-gray-300">Features</a>
-          <a href="#pricing" className="hover:text-gray-300">Pricing</a>
-          <a href="#contact" className="hover:text-gray-300">Contact</a>
+          <Link to="/" className="hover:text-gray-300">Home</Link>
+          <Link to="/pricing" className="hover:text-gray-300">Pricing</Link>
+          <Link to="/contact" className="hover:text-gray-300">Contact</Link>
           <button className="bg-primary-purple hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
             Sign Up
           </button>
