@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 
 const FAQSection = () => {
+  const props = useSpring({
+    from: { opacity: 0, transform: 'translateY(50px)' },
+    to: { opacity: 1, transform: 'translateY(0)' },
+    delay: 200,
+  });
+
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -32,56 +38,41 @@ const FAQSection = () => {
   ];
 
   return (
-    <section id="faq" className="py-16">
+    <animated.section style={props} id="faq" className="py-16 bg-gray-900 text-white">
       <div className="container mx-auto">
-        <div className="grid grid-cols-2 gap-8">
-          <div className="col-span-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
             <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg mb-8 text-gray-400">Here are some questions I often get asked about Reactive Resume.</p>
-            
+            <p className="text-lg mb-8">
+              Here are some questions I often get asked about Reactive Resume.
+            </p>
+            <p className="text-sm mb-8">
+              Unfortunately, this section is available only in English, as I do not want to burden translators with having to translate these large paragraphs of text.
+            </p>
           </div>
-          <div className="col-span-1 space-y-2">
-            {faqData.map((faq, index) => {
-              const isOpen = openIndex === index;
-              const arrowAnimation = useSpring({
-                transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                config: { tension: 200, friction: 22 },
-              });
-
-              const contentAnimation = useSpring({
-                maxHeight: isOpen ? (isOpen ? '1000px' : '0px') : '0px',
-                opacity: isOpen ? 1 : 0,
-                config: { tension: 200, friction: 22 },
-              });
-
-              return (
-                <div key={index} className="py-2">
+          <div>
+            <div className="space-y-4">
+              {faqData.map((faq, index) => (
+                <div key={index} className="border-b border-gray-400 pb-4">
                   <button
-                    className="flex justify-between items-center w-full text-left"
+                    className="flex justify-between items-center w-full"
                     onClick={() => toggleFAQ(index)}
                   >
-                    <span className="text-lg font-medium text-white">{faq.question}</span>
-                    <animated.svg
-                      style={arrowAnimation}
-                      className="w-4 h-4 text-gray-400"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                    </animated.svg>
+                    <span className="text-lg font-medium">{faq.question}</span>
+                    <span className="text-gray-400">
+                      {openIndex === index ? '▲' : '▼'}
+                    </span>
                   </button>
-                  <animated.div style={contentAnimation} className="overflow-hidden">
-                    <p className="mt-2 text-gray-400">{faq.answer}</p>
-                  </animated.div>
+                  {openIndex === index && (
+                    <p className="mt-2 text-gray-300">{faq.answer}</p>
+                  )}
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </animated.section>
   );
 };
 

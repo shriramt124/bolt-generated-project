@@ -7,6 +7,7 @@ const TestimonialsSection = () => {
     to: { opacity: 1, transform: 'translateY(0)' },
     delay: 300,
   });
+
   const testimonials = [
     {
       quote: "This is really a thank you for Reactive Resume. Drafting resumes was never a strength of mine, so your app really made the whole process easy and smooth!",
@@ -47,7 +48,7 @@ const TestimonialsSection = () => {
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold mb-4 text-center">Testimonials</h2>
         <p className="text-lg mb-8 text-center text-gray-400">
-          I always love to hear from the users of Reactive Resume with feedback or support. Here are some of the messages I've received. If you have any feedback, feel free to drop me an email at <a href="mailto:hello@amruthpillai.com" className="text-blue-500">hello@amruthpillai.com</a>.
+          I always love to hear from the users of Reactive Resume with feedback or support. Here are some of the messages I've received. If you have any feedback, feel free to drop me an email at <a href="mailto:hello@amruthpillai.com" className="text-blue-500 hover:text-blue-700">hello@amruthpillai.com</a>.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {testimonials.map((testimonial, index) => (
@@ -55,7 +56,7 @@ const TestimonialsSection = () => {
               key={index}
               className="p-6 bg-glass-bg backdrop-blur-lg rounded-lg border border-glass-border relative"
             >
-              <span className="absolute top-2 right-4 text-6xl text-gray-400 opacity-50">”</span>
+              <span className="absolute top-3 right-5 text-5xl text-gray-400 opacity-50">”</span>
               <p className="text-gray-300 mb-4">"{testimonial.quote}"</p>
               <p className="text-sm font-semibold text-white">- {testimonial.author}</p>
             </div>
