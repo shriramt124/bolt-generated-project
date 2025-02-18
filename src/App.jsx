@@ -4,6 +4,8 @@ import HeroSection from './components/HeroSection';
 import FeaturesSection from './components/FeaturesSection';
 import Footer from './components/Footer';
 import FAQSection from './components/FAQSection';
+import TestimonialsSection from './components/TestimonialsSection';
+import TemplatesCarousel from './components/TemplatesCarousel';
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <HeroSection />
       <FeaturesSection />
       <FAQSection />
+      <TestimonialsSection />
+      <TemplatesCarousel />
       <Footer />
     </div>
   );
